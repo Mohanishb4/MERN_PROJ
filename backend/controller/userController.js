@@ -194,55 +194,32 @@ exports.updatePassword = catchAsyncErrors(async (req, res, next) => {
 });
 
 // Update User Profile
+
 exports.updateProfile = catchAsyncErrors(async (req, res, next) => {
   const newUserData = {
     name: req.body.name,
     email: req.body.email,
   };
 
-  if (req.body.avator !== "") {
-    const user = await User.findById(req.user.id);
+  //have error in this code
 
-    const imageId = user.avator.public_id;
+  // if (req.body.avator !== "") {
+  //   const user = await User.findById(req.user.id);
 
-    await cloudinary.v2.uploader.destroy(imageId);
+  //   const imageId = user.avator.public_id;
 
-    const myCloud = await cloudinary.v2.uploader.upload(req.body.avator, {
-      folder: "avatars",
-      width: 150,
-      crop: "scale",
-    });
-    newUserData.avator = {
-      public_id: myCloud.public_id,
-      url: myCloud.secure_url,
-    };
-  }
+  //   await cloudinary.v2.uploader.destroy(imageId);
 
-  // exports.updateProfile = catchAsyncErrors(async (req, res, next) => {
-  //   const newUserData = {
-  //     name: req.body.name,
-  //     email: req.body.email,
+  //   const myCloud = await cloudinary.v2.uploader.upload(req.body.avator, {
+  //     folder: "avatars",
+  //     width: 150,
+  //     crop: "scale",
+  //   });
+  //   newUserData.avator = {
+  //     public_id: myCloud.public_id,
+  //     url: myCloud.secure_url,
   //   };
-
-  //   if (req.body.avator !== "") {
-  //     const user = await User.findById(req.user.id);
-
-  //     const imageId = user.avator.public_id;
-
-  //     await cloudinary.v2.uploader.destroy(imageId);
-
-  //     const myCloud = await cloudinary.v2.uploader.upload(req.body.avator, {
-  //       folder: "avatars",
-  //       width: 150,
-  //       crop: "scale",
-  //     });
-  //     newUserData.avator = {
-  //       public_id: myCloud.public_id,
-  //       url: myCloud.secure_url,
-  //     };
-  //   }
-
-  ////////////////////////
+  // }
   const user = await User.findByIdAndUpdate(req.user.id, newUserData, {
     new: true,
     runValidator: true,
