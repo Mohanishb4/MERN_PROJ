@@ -4,7 +4,7 @@ import ReactStars from "react-rating-stars-component";
 
 const ProductCard = ({ product }) => {
   const options = {
-    value: 4,
+    value: product.ratings,
     readOnly: true,
     precision: 0.5,
   };
@@ -14,7 +14,10 @@ const ProductCard = ({ product }) => {
       <p>{product.name}</p>
       <div>
         <ReactStars {...options} />{" "}
-        <span className="productCardSpan">(256 reviews)</span>
+        <span className="productCardSpan">
+          {" "}
+          ({product.numOfReviews} Reviews)
+        </span>
       </div>
       <span>{`₹${product.price}`}</span>
     </Link>

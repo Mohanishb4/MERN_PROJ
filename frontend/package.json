@@ -15,11 +15,13 @@
     "@testing-library/react": "^13.2.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.27.2",
+    "chart.js": "^3.7.1",
     "country-state-city": "^3.0.1",
     "overlay-navbar": "^1.2.3",
     "react": "^18.1.0",
     "react-alert": "^7.0.3",
     "react-alert-template-basic": "^1.0.2",
+    "react-chartjs-2": "^4.1.0",
     "react-dom": "^18.1.0",
     "react-helmet": "^6.1.0",
     "react-icons": "^4.3.1",
@@ -59,5 +61,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://192.168.43.178:4000"
+  "proxy": "http://192.168.94.21:4000"
 }

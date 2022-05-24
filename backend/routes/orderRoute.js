@@ -17,14 +17,16 @@ router.route("/order/:id").get(isAuthenticatedUser, getSingleOrder);
 
 router.route("/orders/me").get(isAuthenticatedUser, getAllOrders);
 
-router
-  .route("/admin/orders")
-  .get(isAuthenticatedUser, authorizeRoles("admin"), getAdminAllOrders);
+router.route("/admin/orders").get(isAuthenticatedUser, getAdminAllOrders);
 
 router.route("/order/:id").put(isAuthenticatedUser, updateAdminOrder);
 
 router
   .route("/admin/orders/:id")
   .delete(isAuthenticatedUser, authorizeRoles("admin"), deleteOrder);
+
+router
+  .route("/admin/order/:id")
+  .put(isAuthenticatedUser, authorizeRoles("admin"), updateAdminOrder);
 
 module.exports = router;

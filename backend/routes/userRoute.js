@@ -35,8 +35,8 @@ router
 
 router
   .route("/admin/user/:id")
-  .get(isAuthenticatedUser, authorizeRoles("admin"), getSingleUser)
-  .put(isAuthenticatedUser, authorizeRoles("admin"), updateUserRole)
-  .delete(isAuthenticatedUser, authorizeRoles("admin"), deleteUser);
+  .get(isAuthenticatedUser, getSingleUser)
+  .put(isAuthenticatedUser, updateUserRole)
+  .delete(isAuthenticatedUser, deleteUser);
 
 module.exports = router;
